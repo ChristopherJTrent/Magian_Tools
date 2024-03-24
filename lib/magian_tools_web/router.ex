@@ -9,6 +9,10 @@ defmodule MagianToolsWeb.Router do
     pipe_through :api
   end
 
+  scope "/", MagianToolsWeb do
+    get "/", IndexController, :show
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:magian_tools, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

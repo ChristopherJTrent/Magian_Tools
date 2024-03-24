@@ -14,4 +14,18 @@
 //
 //     import "some-package"
 //
+import React from 'react'
+import {createRoot} from 'react-dom/client'
+import { Layout } from './layout.tsx'
 
+const rootElement = document.getElementById('root');
+
+if (rootElement == null) throw new Error("Root element could not be found");
+
+const root = createRoot(rootElement)
+
+root.render(
+    <Layout/>
+)
+
+// console.log(document.body)
