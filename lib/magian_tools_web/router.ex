@@ -1,4 +1,5 @@
 defmodule MagianToolsWeb.Router do
+  alias MagianToolsWeb.UserController
   use MagianToolsWeb, :router
 
   pipeline :api do
@@ -7,6 +8,8 @@ defmodule MagianToolsWeb.Router do
 
   scope "/api", MagianToolsWeb do
     pipe_through :api
+    resources "/users", UserController, except: [:new, :edit]
+
   end
 
   scope "/", MagianToolsWeb do
