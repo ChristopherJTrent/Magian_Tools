@@ -1,7 +1,11 @@
 import React from 'react'
+import DarkModeToggle from './darkmodeToggle.tsx'
 
 export const Index:React.FC = () => {
 	return (
-		<h1>Hello, World from React.ts driven by Phoenix on Elixir</h1>
+		<>
+			<DarkModeToggle />
+			<h1>Hello, World from React.ts driven by Phoenix on Elixir</h1>
+		</>
 	)
 }

@@ -18,14 +18,14 @@ import React from 'react'
 import {createRoot} from 'react-dom/client'
 import { Layout } from './layout.tsx'
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root')
 
-if (rootElement == null) throw new Error("Root element could not be found");
+if (rootElement == null) throw new Error('Root element could not be found')
 
 const root = createRoot(rootElement)
 
 root.render(
-    <Layout/>
+	<Layout/>
 )
 
 // console.log(document.body)
