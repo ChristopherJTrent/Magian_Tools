@@ -1,18 +1,13 @@
 import React from 'react'
-import {createBrowserRouter, RouterProvider} from 'react-router-dom'
-import { Index } from './components/index.tsx'
+import Nav from './components/Nav.tsx'
+import { Outlet } from 'react-router'
 
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Index/>
-	}
-])
-
-export const Layout:React.FC = () => {
-	return (
-		<RouterProvider router={router}>
-
-		</RouterProvider>
-	)
+const Layout:React.FC = () => {
+	return (<>
+		<Nav />
+		<div id="pageContent">
+			<Outlet />
+		</div>
+	</>)
 }
+export default Layout

@@ -16,16 +16,42 @@
 //
 import React from 'react'
 import {createRoot} from 'react-dom/client'
-import { Layout } from './layout.tsx'
-
+import Layout from './layout.tsx'
+import { Provider } from 'react-redux'
+import { store } from './store/store.ts'
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
+import {Index} from './pages/index.tsx'
 const rootElement = document.getElementById('root')
 
 if (rootElement == null) throw new Error('Root element could not be found')
 
 const root = createRoot(rootElement)
 
+
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <Layout />,
+		children: [
+			{
+				path: '',
+				element: <Index></Index>
+			}
+		]
+	},
+	{
+		path: '*',
+		element: <Navigate to={'/'} />
+	}
+])
+
 root.render(
-	<Layout/>
+	<React.StrictMode>
+		<Provider store={store}>
+			<RouterProvider router={router}>
+			</RouterProvider>
+		</Provider>
+	</React.StrictMode>
 )
 
 // console.log(document.body)
