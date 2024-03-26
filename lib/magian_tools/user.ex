@@ -9,6 +9,7 @@ defmodule MagianTools.User do
     field :email, :string
     field :password_digest, :string
     field :session_token, :string
+    field :permission_level, :integer
 
     timestamps(type: :utc_datetime)
   end
@@ -16,7 +17,7 @@ defmodule MagianTools.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :password_digest, :session_token])
-    |> validate_required([:username, :email, :password_digest, :session_token])
+    |> cast(attrs, [:username, :email, :password_digest, :session_token, :permission_level])
+    |> validate_required([:username, :email, :password_digest, :session_token, :permission_level])
   end
 end

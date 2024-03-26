@@ -3,7 +3,6 @@ defmodule MagianToolsWeb.UserController do
   use MagianToolsWeb, :controller
 
   def index(conn, _params) do
-    conn
-    |> render(Repo.get_by(User, username: "demo"))
+    render(conn, :index, users: Repo.all(User))
   end
 end

@@ -1,5 +1,4 @@
 defmodule MagianToolsWeb.Router do
-  alias MagianToolsWeb.UserController
   use MagianToolsWeb, :router
 
   pipeline :api do
