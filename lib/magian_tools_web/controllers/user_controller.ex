@@ -9,6 +9,7 @@ defmodule MagianToolsWeb.UserController do
   def create(conn, %{"username" => username,
       "email" => email,
       "password" => password}) do
+
     user = User.changeset(%User{}, %{
       username: username,
       email: email,
@@ -16,10 +17,9 @@ defmodule MagianToolsWeb.UserController do
       session_token: Util.base64Random(Util.sessionTokenLength()),
       permission_level: 0
     })
-    IO.inspect(user)
+
     if user.valid? do
       result = Repo.insert!(user)
-      IO.inspect(result)
       render(conn, :show, user: result)
       conn
     end
