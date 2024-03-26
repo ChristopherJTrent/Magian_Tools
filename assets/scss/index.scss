@@ -1,0 +1,36 @@
+@use 'color-themes' as *;
+
+@use 'components/components';
+
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+$font-family: "Julius Sans One", sans-serif;
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+}
+
+#root {
+	@include themed() {
+		background-color: t($surface100);
+		color: t($text)
+	}
+	min-height: 100vh;
+	transition: all 0.25s;
+	font-family: $font-family;
+	font-size: large;
+	font-weight: bolder;
+}
+
+#pageContent {
+	@include themed() {
+		background-color: t($surface100);
+		color: t($text)
+	}
+	height: 100vh;
+	& > * {
+		margin-top: 0;
+	}
+}

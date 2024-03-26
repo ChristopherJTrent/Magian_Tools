@@ -26,6 +26,7 @@ config :magian_tools, MagianToolsWeb.Endpoint,
   secret_key_base: "D7I4qaVu3qSnhqHngjm0dvBB0tLVWW5Ya2pKGg6Rul0x1xDF6Y1eoJIwqVM3JI53",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:magian_tools, ~w(--sourcemap=inline --watch)]},
+    sass: {DartSass, :install_and_run, [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]}
   ]
 
 # ## SSL Support

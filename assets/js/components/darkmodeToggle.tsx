@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 const DarkModeToggle:React.FC = () => {
-	const [checked, setChecked] = useState(true)
+	const dark = window?.matchMedia('prefers-color-scheme: dark')?.matches
+	const [checked, setChecked] = useState(dark ?? true)
 
 	useEffect(() => {
 		const root = document.getElementById('root')
@@ -9,6 +10,10 @@ const DarkModeToggle:React.FC = () => {
 			root.classList.add(checked? 'theme--default' : 'theme--dark')
 		}
 	}, [checked])
+
+	useEffect(() => {
+
+	}, [])
 
 	return (<div className='darkModeToggle'>
 		<input

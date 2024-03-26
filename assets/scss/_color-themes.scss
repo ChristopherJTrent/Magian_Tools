@@ -1,0 +1,63 @@
+$surface100: 'surface-100';
+$surface200: 'surface-200';
+$surface300: 'surface-300';
+$surface400: 'surface-400';
+$surface500: 'surface-500';
+$surface600: 'surface-600';
+$card-bg: 'card-bg';
+$text: 'text';
+$text-secondary: 'text-secondary';
+$link: 'link';
+$hover: 'hover';
+$logo: 'logo';
+
+$lightest: hsl(0, 0%, 80%);
+$lighter:  hsl(0, 0%, 65%);
+$light:    hsl(0, 0%, 50%);
+$dark:     hsl(0, 0%, 35%);
+$darker:   hsl(0, 0%, 20%);
+$darkest:  hsl(0, 0%, 5%);
+
+$themes: (
+	default: (
+		surface-100: $lightest,
+		surface-200: $lighter,
+		surface-300: $light,
+		surface-400: $dark,
+		surface-500: $darker,
+		surface-600: $darkest,
+		text: black
+	),
+	dark: (
+		surface-100: $darkest,
+		surface-200: $darker,
+		surface-300: $dark,
+		surface-400: $light,
+		surface-500: $lighter,
+		surface-600: $lightest,
+		bg: #333,
+		text: aliceblue
+	),
+);
+
+@mixin themed() {
+	@each $theme, $map in $themes {
+		.theme--#{$theme} & {
+			//reset the theme map to nothing
+			$theme-map: () !global;
+
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), '#{$key}');
+				$theme-map: map-merge($theme-map, ($key: $value)) !global;
+			}
+			@content;
+			transition: all 0.25s;
+			$theme-map: null !global;
+
+		}
+	}
+};
+
+@function t($key) {
+	@return map-get($theme-map, $key)
+};
