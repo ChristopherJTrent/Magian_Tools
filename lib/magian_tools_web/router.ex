@@ -11,10 +11,8 @@ defmodule MagianToolsWeb.Router do
     resources "/users", UserController, except: [:new, :edit]
 
   end
-
-  scope "/", MagianToolsWeb do
-    get "/", IndexController, :show
-  end
+  get "/", MagianToolsWeb.IndexController, :show
+  get "/:path", MagianToolsWeb.IndexController, :show
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:magian_tools, :dev_routes) do
