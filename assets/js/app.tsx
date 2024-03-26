@@ -22,6 +22,8 @@ import { store } from './store/store.ts'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {Index} from './pages/index.tsx'
 import { Browse } from './pages/browse.tsx'
+import { LoginForm } from './components/loginForm.tsx'
+import { SignupForm } from './components/signupForm.tsx'
 const rootElement = document.getElementById('root')
 
 if (rootElement == null) throw new Error('Root element could not be found')
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
 			{
 				path: '/browse',
 				element: <Browse />
+			},
+			{
+				path: '/login',
+				element: <LoginForm />
+			},
+			{
+				path: '/register',
+				element: <SignupForm />
 			}
 		]
 	},

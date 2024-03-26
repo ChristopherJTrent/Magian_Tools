@@ -3,14 +3,15 @@ defmodule MagianToolsWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
-
   end
 
   scope "/api", MagianToolsWeb do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
+    resources "/getCSRF", CSRFController, only: [:index]
     resources "/login", SessionController, only: [:create]
     resources "/session", SessionController, only: [:index]
+
 
   end
   get "/", MagianToolsWeb.IndexController, :show

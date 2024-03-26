@@ -4,8 +4,8 @@ defmodule MagianToolsWeb.UserJSON do
   def index(%{users: users}) do
     %{data: for(user <- users, do: data(user))}
   end
-  def show(%{user: user}) do
-    %{user: data(user)}
+  def show(%{user: user, csrf: csrf}) do
+    %{user: data(user), csrf_token: csrf}
   end
 
   defp data(%User{} = user) do

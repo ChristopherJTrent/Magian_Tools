@@ -19,11 +19,10 @@ defmodule MagianToolsWeb.UserController do
     })
 
     if user.valid? do
+      delete_csrf_token()
       result = Repo.insert!(user)
-      render(conn, :show, user: result)
-      conn
+      render(conn, :show, user: result, csrf: get_csrf_token())
     end
-    conn
+    resp(conn, 422, "")
   end
-
 end
