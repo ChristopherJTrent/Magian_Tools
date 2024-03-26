@@ -21,6 +21,7 @@ import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import {Index} from './pages/index.tsx'
+import { Browse } from './pages/browse.tsx'
 const rootElement = document.getElementById('root')
 
 if (rootElement == null) throw new Error('Root element could not be found')
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '',
-				element: <Index></Index>
+				element: <Index />
+			},
+			{
+				path: '/browse',
+				element: <Browse />
 			}
 		]
 	},
