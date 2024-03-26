@@ -67,6 +67,7 @@ defmodule MagianTools.MixProject do
       "assets.build": ["esbuild magian_tools"],
       "assets.deploy": [
         "esbuild magian_tools --minify",
+        "sass magian_tools --no-source-map --style=compressed",
         "phx.digest"
       ]
     ]
