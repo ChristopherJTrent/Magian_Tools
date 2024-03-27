@@ -1,6 +1,7 @@
-@use 'color-themes' as *;
+@use 'shared/color-themes' as *;
 
 @use 'components/components';
+@use 'shared/shared';
 
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
@@ -29,8 +30,8 @@ body {
 		background-color: t($surface100);
 		color: t($text)
 	}
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	height: 100vh;
-	& > * {
-		margin-top: 0;
-	}
 }

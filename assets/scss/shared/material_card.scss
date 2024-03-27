@@ -1,0 +1,23 @@
+@use 'themed_input' as *;
+@use 'color-themes' as *;
+
+.materialCard {
+	@include themed() {
+		background-color: t($surface200);
+	}
+	& input {
+		@include themed_input()
+	}
+	&.flex {
+		display: flex;
+		&.vertical {
+			flex-direction: column;
+		}
+		&.center {
+			align-items: center;
+		}
+	}
+	&:first-of-type {
+		margin-top: 1em;
+	}
+}

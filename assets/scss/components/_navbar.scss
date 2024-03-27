@@ -1,4 +1,4 @@
-@use '../color-themes' as *;
+@use '../shared/color-themes' as *;
 
 .navbar {
 	@include themed() {
@@ -16,7 +16,10 @@
 		color: inherit;
 		text-decoration: none;
 		height: 100%;
-		padding-right: 5px;
+		padding-right: 1em;
+		padding-left: 1em;
+		margin-left: 5px;
+		font-size: larger;
 		& > #brandingIcon {
 			height: 3em;
 		}
@@ -25,6 +28,10 @@
 				background-color: t($surface300);
 				border-bottom: 2px solid #a44834;
 			}
+		}
+		&:first-of-type {
+			margin-left: 0;
+			padding-left: 10px;
 		}
 	}
 }

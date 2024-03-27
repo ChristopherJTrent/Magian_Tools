@@ -1,0 +1,14 @@
+@use './color-themes' as *;
+
+@mixin themed_input {
+	@include themed() {
+		background-color: t($surface300);
+		border: none;
+		margin-bottom: 5px;
+		color: t($text);
+		font-family: inherit;
+		font-size: larger;
+		padding: 5px;
+		border-radius: 5px;
+	}
+}
