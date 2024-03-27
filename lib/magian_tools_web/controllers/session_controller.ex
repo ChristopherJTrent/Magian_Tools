@@ -22,11 +22,9 @@ defmodule MagianToolsWeb.SessionController do
   def create(conn, %{"email" => email, "password" => password}) do
     user = User.get_by_creds(email, password)
     if user do
-      delete_csrf_token()
       conn
       |> fetch_session()
       |> put_session(:session_token, User.update_session_token(user))
-      |> json(%{csrf_token: get_csrf_token()})
     end
   end
 end

@@ -48,6 +48,6 @@ defmodule MagianToolsWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug :fetch_session
-  plug Plug.CSRFProtection
+  plug CORSPlug
   plug MagianToolsWeb.Router
 end

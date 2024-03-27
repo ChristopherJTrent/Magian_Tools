@@ -18,7 +18,7 @@ defmodule MagianTools.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:username, :email, :password_digest, :session_token, :permission_level])
+    |> cast(attrs, [:id, :username, :email, :password_digest, :session_token, :permission_level])
     |> validate_required([:username, :email, :password_digest, :session_token, :permission_level])
   end
 

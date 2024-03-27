@@ -8,7 +8,6 @@ defmodule MagianToolsWeb.Router do
   scope "/api", MagianToolsWeb do
     pipe_through :api
     resources "/users", UserController, except: [:new, :edit]
-    resources "/getCSRF", CSRFController, only: [:index]
     resources "/login", SessionController, only: [:create]
     resources "/session", SessionController, only: [:index]
 

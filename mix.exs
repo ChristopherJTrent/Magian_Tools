@@ -47,7 +47,8 @@ defmodule MagianTools.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:bcrypt_elixir, "~> 3.1"},
-      {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev}
+      {:dart_sass, "~> 0.6", runtime: Mix.env() == :dev},
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
