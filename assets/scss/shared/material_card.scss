@@ -6,7 +6,10 @@
 		background-color: t($surface200);
 	}
 	& input {
-		@include themed_input()
+		@include themed_input();
+	}
+	& button {
+		@include themed_input();
 	}
 	&.flex {
 		display: flex;
