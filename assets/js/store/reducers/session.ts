@@ -2,8 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 interface SessionState {
-	CsrfToken?: string
-	sessionToken?: number
+	sessionToken?: string
 }
 
 const initialState:SessionState = {}
@@ -12,10 +11,7 @@ const sessionSlice = createSlice({
 	name: 'session',
 	initialState,
 	reducers: {
-		acceptCSRFToken(state:SessionState, action: PayloadAction<string>) {
-			state.CsrfToken = action.payload
-		},
-		login(state: SessionState, action: PayloadAction<number>) {
+		login(state: SessionState, action: PayloadAction<string>) {
 			state.sessionToken = action.payload
 		},
 		logout(state: SessionState) {
@@ -24,5 +20,5 @@ const sessionSlice = createSlice({
 	}
 })
 
-export const {acceptCSRFToken, login, logout} = sessionSlice.actions
+export const {login, logout} = sessionSlice.actions
 export default sessionSlice.reducer

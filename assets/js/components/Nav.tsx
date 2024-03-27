@@ -1,8 +1,10 @@
 import React from 'react'
 import DarkModeToggle from './darkmodeToggle.tsx'
 import { NavLink } from 'react-router-dom'
+import { SessionDisplay } from './sessionDisplay.tsx'
 
 export const Nav:React.FC = () =>{
+	
 	return (
 		<div className='navbar'>
 			<NavLink to={'/'}>
@@ -13,6 +15,7 @@ export const Nav:React.FC = () =>{
 				Browse
 			</NavLink>
 			<DarkModeToggle />
+			<SessionDisplay></SessionDisplay>
 		</div>
 	)
 }

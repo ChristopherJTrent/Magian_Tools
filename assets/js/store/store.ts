@@ -1,8 +1,10 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import uiReducer from './reducers/ui.ts'
+import sessionReducer from './reducers/session.ts'
 
 const rootReducer = combineReducers({
-	ui: uiReducer
+	ui: uiReducer,
+	session: sessionReducer
 })
 export const store = configureStore({
 	reducer: rootReducer

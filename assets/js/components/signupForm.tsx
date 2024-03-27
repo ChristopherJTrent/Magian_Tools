@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { acceptCSRFToken } from '../store/reducers/session.ts'
+import { acceptUser } from '../store/reducers/users.ts'
 
 export const SignupForm:React.FC = () => {
 	const [email, setEmail] = useState('')
@@ -8,28 +8,25 @@ export const SignupForm:React.FC = () => {
 	const [username, setUsername] = useState('')
 	const dispatch = useDispatch()
 
-	const handleSubmit = () => async () => {
-		const token = await fetch ('/api/getCSRF')
-		if (token.ok && token.body) {
-			const response = await fetch('/api/users', {
-				method: 'POST',
-				body: JSON.stringify({
-					email: email,
-					username: username,
-					password: password,
-				}),
-				headers: {
-					'x-csrf-token': (await token.json())['csrf-token']
-				}
-			})
-			if (response.ok) {
-				const data = await response.json()
-				dispatch(acceptCSRFToken(data.csrf_token))
+	const handleSubmit = () => async (e:FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const response = await fetch('/api/users', {
+			method: 'POST',
+			body: JSON.stringify({
+				email: email,
+				username: username,
+				password: password,
+			}),
+			headers: {
+				'content-type': 'application/json'
 			}
+		})
+		if (response.ok) {
+			dispatch(acceptUser(await response.json()))
 		}
-	} 
+	}
 
-	return (<form>
+	return (<form className={'materialCard flex vertical center'} onSubmit={handleSubmit()}>
 		<input type="text" 
 			name="username" 
 			id="username" 
@@ -45,5 +42,6 @@ export const SignupForm:React.FC = () => {
 			id="password"
 			value={password}
 			onChange={(e) => setPassword(e.target.value)} />
+		<button type="submit">Register</button>
 	</form>)
 }

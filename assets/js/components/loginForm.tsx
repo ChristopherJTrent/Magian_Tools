@@ -4,8 +4,8 @@ export const LoginForm:React.FC = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 
-	return (<form>
-		<input type="email" 
+	return (<form className={'materialCard flex vertical center'}>
+		<input  type="email" 
 			name="email" 
 			id="email"
 			value={email}
